@@ -1,5 +1,4 @@
 #!/bin/bash -xe
-set -e
 sudo apt update
 sudo apt install wget unzip -y
 sudo apt install nginx -y
