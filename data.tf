@@ -14,6 +14,8 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonicall
 }
 
-
+data "aws_key_pair" "my_key" {
+  key_name = "bastonHost-key" # Replace with the name of your key pair
+}
 
 
