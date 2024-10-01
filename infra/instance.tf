@@ -1,11 +1,11 @@
 terraform {
-  #   backend "s3" {
-  #   bucket         = "oriafostatebbucket"
-  #   key            = "infraa.tfstate"
-  #   region         = "us-east-1"         
-  #   dynamodb_table = "ab-provisioner-lock"    
-  #   encrypt        = true                  
-  # }
+    backend "s3" {
+    bucket         = "oriafostatebbucket"
+    key            = "infraa.tfstate"
+    region         = "us-east-1"         
+    dynamodb_table = "ab-provisioner-lock"    
+    encrypt        = true                  
+  }
 
   required_providers {
     aws = {
@@ -46,9 +46,7 @@ resource "aws_instance" "provisioner_machine" {
 
   provisioner "remote-exec" {
     inline = [
-      #"sudo chown ubuntu:ubuntu /home/ubuntu/web.sh",
       "chmod +x /home/ubuntu/web.sh", # Make the file executable
-      #"cd /home/ubuntu/",
       "/home/ubuntu/web.sh",         # Execute the file
     ]
 
@@ -62,27 +60,3 @@ resource "aws_instance" "provisioner_machine" {
   }
 }
 
-# resource "aws_instance" "example" {
-#   ami           = "ami-0c55b159cbfafe1f0" # Example AMI
-#   instance_type = "t2.micro"
-
-#   provisioner "file" {
-#     source      = "local_file.txt"       # Local file path
-#     destination = "/home/ec2-user/remote_file.txt" # Destination on the instance
-#   }
-
-#   provisioner "remote-exec" {
-#     inline = [
-#       "chmod +x /home/ec2-user/remote_file.txt",  # Make the file executable
-#       "/home/ec2-user/remote_file.txt",             # Execute the file
-#     ]
-
-#     # Connect to the instance
-#     connection {
-#       type        = "ssh"
-#       host        = self.public_ip
-#       user        = "ec2-user"
-#       private_key = file("~/.ssh/my_key.pem") # Path to your SSH key
-#     }
-#   }
-# }
