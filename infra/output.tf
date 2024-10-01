@@ -1,3 +1,3 @@
-# output "instance" {
-#   value = data.aws_ami.ubuntu.id
-# }
+output "instance" {
+  value = aws_instance.provisioner_machine.id
+}
