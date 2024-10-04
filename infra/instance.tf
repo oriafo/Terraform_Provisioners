@@ -1,11 +1,11 @@
 terraform {
-    backend "s3" {
-    bucket         = "oriafostatebbucket"
-    key            = "infraa.tfstate"
-    region         = "us-east-1"         
-    dynamodb_table = "ab-provisioner-lock"    
-    encrypt        = true                  
-  }
+  #   backend "s3" {
+  #   bucket         = "oriafostatebbucket"
+  #   key            = "infraa.tfstate"
+  #   region         = "us-east-1"         
+  #   dynamodb_table = "ab-provisioner-lock"    
+  #   encrypt        = true                  
+  # }
 
   required_providers {
     aws = {
